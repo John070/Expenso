@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+  <title>Expenso</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Expenso</h1>
+  </header>
+  <div class="container-top">
+    <div class="stats-1">
+      <p id="income-stats">Total Income: <span class="total-income">0</span></p>
+      <p id="expense-stats">
+        Total Expenses: <span class="total-expense">0</span>
+      </p>
+    </div>
+    <div class="stats-2">
+      <p>Time is bla</p>
+      <p id="inc-perc">75%</p>
+      <p id="exp-perc">25%</p>
+    </div>
+    <div class="add-item">
+      <select class="add__type">
+        <option value="inc">+</option>
+        <option value="exp">-</option>
+      </select>
+      <input type="text" id="desc" placeholder="Description...." />
+      <input type="number" id="value" />
+      <button id="add-btn">Add Item</button>
+    </div>
+  </div>
+  <div class="container-bottom">
+    <div class="list">
+      <!-- <div> -->
+      <div class="list-type">
+        <a href="#" id="list-type-income">Income</a>
+        <!-- </div> -->
+        <!-- <div> -->
+        <a href="#" id="list-type-expense">Expense</a>
+        <!-- </div> -->
+      </div>
+      <div class="income-list">
+        <!-- <table class="inc-table table-style"> -->
+        <!-- <div class="item">
+          <div class="item-desc">Salary</div>
+          <div class="item-value">
+            25000<span class="delete-btn">hello</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-desc">Bonus</div>
+          <div class="item-value">5000</div>
+        </div>
+
+        <div class="item">
+          <div class="item-desc">Salary</div>
+          <div class="item-value">
+            25000<span class="delete-btn">hello</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-desc">Bonus</div>
+          <div class="item-value">5000</div>
+        </div>
+      </div> -->
+        <!-- </table> -->
+      </div>
+      <div class="expense-list">
+        <!-- <table class="exp-table table-style"> -->
+        <!-- <tr id="exp-1">
+            <td>Rent</td>
+            <td>8000</td>
+          </tr>
+          <tr id="exp-2">
+            <td>Electricity</td>
+            <td>1500</td>
+          </tr> -->
+        <!-- </table> -->
+      </div>
+    </div>
+  </div>
+  <script src="js/app.js"></script>
+</body>

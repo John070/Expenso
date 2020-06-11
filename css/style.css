@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 30px;
+}
+
+.header {
+  border: 1px solid black;
+  width: 50%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  background-color: #99cc60;
+}
+
+.container-top {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+a {
+  display: block;
+  height: 100%;
+}
+.stats-1 {
+  display: inline-block;
+  position: absolute;
+  left: 25%;
+}
+
+#income-stats {
+  background-color: #00e676;
+  border-radius: 5px 0px;
+  padding: 20px;
+}
+
+#expense-stats {
+  background-color: #ff5252;
+  border-radius: 0px 5px;
+  padding: 20px;
+}
+
+.stats-2 {
+  display: inline-block;
+  position: absolute;
+  right: 25%;
+}
+
+#inc-perc {
+  display: inline;
+  background-color: #00e676;
+  margin-right: 0;
+  padding-right: 0;
+  border: 1px solid black;
+}
+
+#exp-perc {
+  display: inline;
+  margin-left: 0;
+  padding-left: 0;
+  border: 1px solid black;
+  background-color: #ff5252;
+}
+
+.add-item {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 170px;
+}
+
+.add__type {
+  height: 30px;
+}
+
+#desc {
+  height: 30px;
+}
+
+#add-btn {
+  height: 30px;
+}
+
+.container-bottom {
+  position: relative;
+  top: 220px;
+}
+
+.list {
+  border: 1px solid black;
+  width: 50%;
+}
+
+.list-type a,
+a:link,
+a:visited {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+#list-type-income,
+#list-type-expense {
+  border: 1px solid black;
+  font-size: 30px;
+  /* margin-left: 20px; */
+  width: 50%;
+  float: left;
+}
+
+.list-type {
+  margin-bottom: 50px;
+}
+
+.expense-list {
+  display: none;
+}
+
+.table-style {
+  width: 100%;
+}
+td {
+  border: 1px solid black;
+  width: 50%;
+  /* text-align: left; */
+}
+td:nth-of-type(2) {
+  text-align: right;
+  /* background-color: yellow; */
+}
+
+.delete-btn {
+  display: none;
+}
+
+tr:hover .delete-btn {
+  background-color: red;
+  display: inline;
+}
+
+.income-list,
+.expense-list {
+  margin-top: 25px;
+}
+.item {
+  /* margin-top: 20px; */
+  padding: 15px;
+  border: 1px solid black;
+}
+.item:nth-of-type(even) {
+  background-color: red;
+}
+.item-desc {
+  float: left;
+}
+.item-value {
+  float: right;
+}
