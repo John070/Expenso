@@ -4,10 +4,10 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header class="header">
+  <!-- <header class="header">
     <h1>Expenso</h1>
-  </header>
-  <div class="container-top">
+  </header> -->
+  <div class="container-top clearfix">
     <div class="stats-1">
       <p id="income-stats">Total Income: <span class="total-income">0</span></p>
       <p id="expense-stats">
@@ -32,16 +32,16 @@
   <div class="container-bottom">
     <div class="list">
       <!-- <div> -->
-      <div class="list-type">
-        <a href="#" id="list-type-income">Income</a>
+      <div class="list-type clearfix">
+        <a href="#" id="list-type-income" class="activeList">Income</a>
         <!-- </div> -->
         <!-- <div> -->
-        <a href="#" id="list-type-expense">Expense</a>
+        <a href="#" id="list-type-expense" class="list-type-style">Expense</a>
         <!-- </div> -->
       </div>
       <div class="income-list">
         <!-- <table class="inc-table table-style"> -->
-        <!-- <div class="item">
+        <!-- <!-- <div class="item">
           <div class="item-desc">Salary</div>
           <div class="item-value">
             25000<span class="delete-btn">hello</span>
@@ -50,19 +50,19 @@
         <div class="item">
           <div class="item-desc">Bonus</div>
           <div class="item-value">5000</div>
-        </div>
+        </div> -->
 
-        <div class="item">
+        <div class="item clearfix">
           <div class="item-desc">Salary</div>
           <div class="item-value">
-            25000<span class="delete-btn">hello</span>
+            25000<span class="delete-btn"><button>delete</button></span>
           </div>
         </div>
-        <div class="item">
+        <div class="item clearfix">
           <div class="item-desc">Bonus</div>
-          <div class="item-value">5000</div>
+          <div class="item-value">5000<span class="delete-btn"><button>delete</button></span></div>
         </div>
-      </div> -->
+      </div> 
         <!-- </table> -->
       </div>
       <div class="expense-list">

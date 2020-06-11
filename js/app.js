@@ -4,12 +4,22 @@ document
     var clickedList = event.target.id;
     var inc = document.getElementsByClassName("income-list")[0];
     var exp = document.getElementsByClassName("expense-list")[0];
+    var incHeader = document.getElementById("list-type-income");
+    var expHeader = document.getElementById("list-type-expense");
     inc.style.display = "none";
     exp.style.display = "none";
     if (clickedList === "list-type-income") {
       inc.style.display = "inline";
+      incHeader.classList.add("activeList");
+      incHeader.classList.remove("list-type-style");
+      expHeader.classList.remove("activeList");
+      expHeader.classList.add("list-type-style");
     } else {
       exp.style.display = "inline";
+      expHeader.classList.add("activeList");
+      expHeader.classList.remove("list-type-style");
+      incHeader.classList.remove("activeList");
+      incHeader.classList.add("list-type-style");
     }
   });
 
@@ -50,6 +60,30 @@ var dataController = (function () {
       budgetData[type].push(newItem);
       return newItem;
     },
+    deleteItem: function (itemDeleted) {
+      var itemDetails, type, ID, position;
+      // console.log(itemClass);
+      itemDetails = itemDeleted.split("-");
+      console.log(itemDetails);
+      type = itemDetails[0];
+      ID = parseInt(itemDetails[1]);
+      console.log("here id", budgetData[type][0].ID);
+      // console.log("here", type, ID);
+      for (var i = 0; i < budgetData[type].length; i++) {
+        if (budgetData[type][i].ID === ID) {
+          position = i;
+          console.log("came");
+          break;
+        }
+      }
+      console.log(position);
+      if (type === "inc") {
+        budgetData.totalInc -= budgetData["inc"][position].value;
+      } else {
+        budgetData.totalExp -= budgetData["exp"][position].value;
+      }
+      budgetData[type].splice(position, 1);
+    },
     getTotal: function () {
       return {
         inc: budgetData.totalInc,
@@ -71,6 +105,7 @@ var uiController = (function () {
     expList: ".expense-list",
     incomeTotal: ".total-income",
     expenseTotal: ".total-expense",
+    deleteItem: ".list",
   };
   return {
     getInput: function () {
@@ -87,19 +122,19 @@ var uiController = (function () {
     getDomStrings: function () {
       return DOMStrings;
     },
-    updateUI: function (newItem, type) {
+    addItem: function (newItem, type) {
       var id, desc, val, table;
       id = newItem.ID;
       desc = newItem.description;
       val = newItem.value;
       htmlString =
-        '<div class="item" id="$$$$-' +
+        '<div class="item clearfix" id="$$$$-' +
         id +
         '"><div class="item-desc">' +
         desc +
         '</div><div class="item-value">' +
         val +
-        '<span class="delete-btn">hello</span></div></div>';
+        '<span class="delete-btn"><button class="delete-item">delete</button></span></div></div>';
       if (type === "inc") {
         htmlString = htmlString.replace("$$$$", "inc");
         table = document.querySelector(DOMStrings.incList);
@@ -117,6 +152,14 @@ var uiController = (function () {
       document.querySelector(DOMStrings.incomeTotal).textContent = inc;
       document.querySelector(DOMStrings.expenseTotal).textContent = exp;
     },
+    deleteItem: function (target) {
+      var elementToDelete, itemDeleted;
+      elementToDelete = target.parentNode.parentNode.parentNode;
+      itemDeleted = elementToDelete.id;
+      console.log(itemDeleted);
+      elementToDelete.parentNode.removeChild(elementToDelete);
+      return itemDeleted;
+    },
   };
 })();
 
@@ -127,19 +170,33 @@ var appController = (function (dataCtrl, uiCtrl) {
     //Get data from Ui
     inputData = uiCtrl.getInput();
     newItem = dataCtrl.addItem(inputData.type, inputData.desc, inputData.val);
-    uiCtrl.updateUI(newItem, inputData.type);
+    uiCtrl.addItem(newItem, inputData.type);
     totalBudget = dataCtrl.getTotal();
     // console.log(totalBudget);
     uiCtrl.updateTotal(totalBudget);
 
-    dataCtrl.testOp();
+    // dataCtrl.testOp();
   };
+
+  var deleteItem = function (event) {
+    var deletedElement, totalBudget;
+    if (event.target.parentNode.parentNode.parentNode.id) {
+      deletedElement = uiCtrl.deleteItem(event.target);
+      dataCtrl.deleteItem(deletedElement);
+      totalBudget = dataCtrl.getTotal();
+      uiCtrl.updateTotal(totalBudget);
+    }
+  };
+
   var setUpEventListeners = function () {
     var DomStrings;
     DomStrings = uiCtrl.getDomStrings();
     document
       .querySelector(DomStrings.addBtn)
       .addEventListener("click", addItem);
+    document
+      .querySelector(DomStrings.deleteItem)
+      .addEventListener("click", deleteItem);
   };
   return {
     init: function () {

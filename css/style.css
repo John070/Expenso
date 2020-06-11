@@ -8,7 +8,7 @@ body {
   margin: 30px;
 }
 
-.header {
+/* .header {
   border: 1px solid black;
   width: 50%;
   text-align: center;
@@ -18,12 +18,24 @@ body {
   margin-right: auto;
   border-radius: 20px;
   background-color: #99cc60;
-}
+} */
 
 .container-top {
   margin-top: 20px;
   margin-bottom: 20px;
+  text-align: center;
   position: relative;
+  height: 150px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table;
 }
 
 a {
@@ -31,9 +43,10 @@ a {
   height: 100%;
 }
 .stats-1 {
-  display: inline-block;
+  /* display: inline-block; */
   position: absolute;
   left: 25%;
+  /* float: left; */
 }
 
 #income-stats {
@@ -49,9 +62,10 @@ a {
 }
 
 .stats-2 {
-  display: inline-block;
+  /* display: inline-block; */
   position: absolute;
   right: 25%;
+  /* float: right; */
 }
 
 #inc-perc {
@@ -81,9 +95,9 @@ a {
   height: 30px;
 }
 
-#desc {
+/* #desc {
   height: 30px;
-}
+} */
 
 #add-btn {
   height: 30px;
@@ -91,11 +105,11 @@ a {
 
 .container-bottom {
   position: relative;
-  top: 220px;
+  top: 120px;
 }
 
 .list {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 50%;
 }
 
@@ -106,55 +120,56 @@ a:visited {
   text-decoration: none;
   color: black;
 }
-
+.activeList {
+  background-color: blueviolet;
+}
 #list-type-income,
 #list-type-expense {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   font-size: 30px;
   /* margin-left: 20px; */
   width: 50%;
   float: left;
 }
 
-.list-type {
-  margin-bottom: 50px;
+.list-type-style {
+  background-color: cadetblue;
+  /* border: 1px solid blue; */
 }
-
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 .expense-list {
   display: none;
-}
-
-.table-style {
-  width: 100%;
-}
-td {
-  border: 1px solid black;
-  width: 50%;
-  /* text-align: left; */
-}
-td:nth-of-type(2) {
-  text-align: right;
-  /* background-color: yellow; */
 }
 
 .delete-btn {
   display: none;
 }
 
-tr:hover .delete-btn {
+.item {
+  padding: 5px;
+}
+.item:hover .delete-btn {
   background-color: red;
   display: inline;
 }
 
-.income-list,
+input[type="text"],
+input[type="number"] {
+  outline: none;
+  height: 30px;
+}
+input[type="text"]:focus {
+  border-color: chartreuse;
+}
+/* .income-list,
 .expense-list {
   margin-top: 25px;
-}
-.item {
-  /* margin-top: 20px; */
-  padding: 15px;
-  border: 1px solid black;
-}
+} */
+
 .item:nth-of-type(even) {
   background-color: red;
 }
