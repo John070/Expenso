@@ -134,7 +134,7 @@ var uiController = (function () {
         desc +
         '</div><div class="item-value">' +
         val +
-        '<span class="delete-btn"><button class="delete-item">delete</button></span></div></div>';
+        '<span class="delete-btn"><i class="fas fa-trash"></span></div></div>';
       if (type === "inc") {
         htmlString = htmlString.replace("$$$$", "inc");
         table = document.querySelector(DOMStrings.incList);

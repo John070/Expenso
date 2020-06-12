@@ -146,17 +146,31 @@ a:visited {
 }
 
 .delete-btn {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
+  float: right;
+  transform: translateX(20px);
 }
 
 .item {
   padding: 5px;
 }
 .item:hover .delete-btn {
-  background-color: red;
-  display: inline;
+  /* background-color: red; */
+  /* display: block; */
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(10px);
+  transition: all 0.2s linear;
 }
 
+.item:hover .item-value {
+  transform: translateX(-10px);
+}
+.fa-trash {
+  color: red;
+}
 input[type="text"],
 input[type="number"] {
   outline: none;
@@ -171,10 +185,11 @@ input[type="text"]:focus {
 } */
 
 .item:nth-of-type(even) {
-  background-color: red;
+  background-color: gray;
 }
 .item-desc {
   float: left;
+  padding-left: 10px;
 }
 .item-value {
   float: right;
