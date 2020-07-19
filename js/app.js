@@ -105,8 +105,11 @@ var uiController = (function () {
     expList: ".expense-list",
     incomeTotal: ".total-income",
     expenseTotal: ".total-expense",
+    availableBudget: ".budget-available",
     deleteItem: ".list",
   };
+  var pieChart;
+  var chartData;
   return {
     getInput: function () {
       var type, desc, val;
@@ -149,8 +152,14 @@ var uiController = (function () {
       inc = totalBudget.inc;
       exp = totalBudget.exp;
       console.log(inc, exp);
+      // this.setChart([inc, exp]);
+      document.querySelector(DOMStrings.availableBudget).textContent =
+        inc - exp;
       document.querySelector(DOMStrings.incomeTotal).textContent = inc;
       document.querySelector(DOMStrings.expenseTotal).textContent = exp;
+      chartData[0] = inc;
+      chartData[1] = exp;
+      pieChart.update();
     },
     deleteItem: function (target) {
       var elementToDelete, itemDeleted;
@@ -159,6 +168,36 @@ var uiController = (function () {
       console.log(itemDeleted);
       elementToDelete.parentNode.removeChild(elementToDelete);
       return itemDeleted;
+    },
+
+    setChart: function (data) {
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var data = {
+        labels: ["Income", "Expense"],
+        datasets: [
+          {
+            data: data,
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+            ],
+            borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      var options = {
+        legend: {
+          display: false,
+        },
+      };
+      pieChart = new Chart(ctx, {
+        type: "doughnut",
+        data: data,
+        options: options,
+      });
+      chartData = pieChart.config.data.datasets[0].data;
     },
   };
 })();
@@ -188,6 +227,30 @@ var appController = (function (dataCtrl, uiCtrl) {
     }
   };
 
+  var setupDate = function () {
+    var date, day, monthArr, month, year, displayDate;
+    monthArr = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    date = new Date();
+    day = date.getDate();
+    month = monthArr[date.getMonth()];
+    year = date.getFullYear();
+    displayDate = month + " " + day + ", " + year;
+    document.querySelector(".date-today").textContent = displayDate;
+  };
+
   var setUpEventListeners = function () {
     var DomStrings;
     DomStrings = uiCtrl.getDomStrings();
@@ -200,7 +263,9 @@ var appController = (function (dataCtrl, uiCtrl) {
   };
   return {
     init: function () {
+      setupDate();
       setUpEventListeners();
+      uiCtrl.setChart([50, 50]);
     },
   };
 })(dataController, uiController);

@@ -25,7 +25,7 @@ body {
   margin-bottom: 20px;
   text-align: center;
   position: relative;
-  height: 150px;
+  height: 250px;
 }
 
 .clearfix {
@@ -42,11 +42,32 @@ a {
   display: block;
   height: 100%;
 }
-.stats-1 {
-  /* display: inline-block; */
+
+#stats-1 {
   position: absolute;
   left: 25%;
+}
+.budget-total {
+  /* display: inline-block; */
+  /* position: absolute;
+  left: 25%; */
+  background-color: #00e676;
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
+  margin-top: 30px;
+  text-align: left;
+
   /* float: left; */
+}
+
+.date-today {
+  background-color: greenyellow;
+
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 20px;
 }
 
 #income-stats {
@@ -61,10 +82,12 @@ a {
   padding: 20px;
 }
 
-.stats-2 {
+#stats-2 {
   /* display: inline-block; */
   position: absolute;
   right: 25%;
+  height: 200px;
+  margin: 20px 0;
   /* float: right; */
 }
 
@@ -84,17 +107,41 @@ a {
   background-color: #ff5252;
 }
 
+.add-item-container {
+  /* position: absolute; */
+  /* float: right; */
+  /* margin: 0 auto; */
+  /* width: 25%; */
+  /* display: inline-block; */
+  float: right;
+  width: 50%;
+  padding-top: 10px;
+
+  /* width: 50%; */
+
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* top: 250px; */
+}
+
 .add-item {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 170px;
+  margin: auto;
+  width: 50%;
+  border: 1px solid black;
+  padding: 10px;
 }
 
-.add__type {
+.add__type,
+#desc,
+#value,
+#add-btn {
   height: 30px;
+  margin-bottom: 10px;
 }
 
+#add-btn {
+  margin-left: 75%;
+}
 /* #desc {
   height: 30px;
 } */
@@ -105,14 +152,16 @@ a {
 
 .container-bottom {
   position: relative;
-  top: 120px;
+  top: 30px;
 }
 
 .list {
-  /* border: 1px solid black; */
   width: 50%;
+  /* display: inline-block; */
+  float: left;
+  padding-left: 60px;
+  padding-top: 10px;
 }
-
 .list-type a,
 a:link,
 a:visited {
@@ -154,7 +203,8 @@ a:visited {
 }
 
 .item {
-  padding: 5px;
+  box-sizing: border-box;
+  /* padding: 5px; */
 }
 .item:hover .delete-btn {
   /* background-color: red; */
@@ -175,6 +225,7 @@ input[type="text"],
 input[type="number"] {
   outline: none;
   height: 30px;
+  display: block;
 }
 input[type="text"]:focus {
   border-color: chartreuse;
