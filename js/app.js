@@ -9,13 +9,13 @@ document
     inc.style.display = "none";
     exp.style.display = "none";
     if (clickedList === "list-type-income") {
-      inc.style.display = "inline";
+      inc.style.display = "block";
       incHeader.classList.add("activeList");
       incHeader.classList.remove("list-type-style");
       expHeader.classList.remove("activeList");
       expHeader.classList.add("list-type-style");
     } else {
-      exp.style.display = "inline";
+      exp.style.display = "block";
       expHeader.classList.add("activeList");
       expHeader.classList.remove("list-type-style");
       incHeader.classList.remove("activeList");
