@@ -1,30 +1,4 @@
-document
-  .getElementsByClassName("list-type")[0]
-  .addEventListener("click", function (event) {
-    var clickedList = event.target.id;
-    var inc = document.getElementsByClassName("income-list")[0];
-    var exp = document.getElementsByClassName("expense-list")[0];
-    var incHeader = document.getElementById("list-type-income");
-    var expHeader = document.getElementById("list-type-expense");
-    inc.style.display = "none";
-    exp.style.display = "none";
-    if (clickedList === "list-type-income") {
-      inc.style.display = "block";
-      incHeader.classList.add("activeList");
-      incHeader.classList.remove("list-type-style");
-      expHeader.classList.remove("activeList");
-      expHeader.classList.add("list-type-style");
-    } else {
-      exp.style.display = "block";
-      expHeader.classList.add("activeList");
-      expHeader.classList.remove("list-type-style");
-      incHeader.classList.remove("activeList");
-      incHeader.classList.add("list-type-style");
-    }
-  });
-
 var dataController = (function () {
-  //to-do
   var budgetData = {
     inc: [],
     exp: [],
@@ -107,6 +81,7 @@ var uiController = (function () {
     expenseTotal: ".total-expense",
     availableBudget: ".budget-available",
     deleteItem: ".list",
+    listCat: ".list-type",
   };
   var pieChart;
   var chartData;
@@ -177,11 +152,8 @@ var uiController = (function () {
         datasets: [
           {
             data: data,
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-            ],
-            borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
+            backgroundColor: ["#B2FF59", "#FF5252"],
+            // borderColor: ["rgba(255, 99, 132, 1)", "rgba(54, 162, 235, 1)"],
             borderWidth: 1,
           },
         ],
@@ -251,6 +223,29 @@ var appController = (function (dataCtrl, uiCtrl) {
     document.querySelector(".date-today").textContent = displayDate;
   };
 
+  var changeList = function (event) {
+    var clickedList = event.target.id;
+    var inc = document.getElementsByClassName("income-list")[0];
+    var exp = document.getElementsByClassName("expense-list")[0];
+    var incHeader = document.getElementById("list-type-income");
+    var expHeader = document.getElementById("list-type-expense");
+    inc.style.display = "none";
+    exp.style.display = "none";
+    if (clickedList === "list-type-income") {
+      inc.style.display = "block";
+      incHeader.classList.add("activeList");
+      incHeader.classList.remove("list-type-style");
+      expHeader.classList.remove("activeList");
+      expHeader.classList.add("list-type-style");
+    } else {
+      exp.style.display = "block";
+      expHeader.classList.add("activeList");
+      expHeader.classList.remove("list-type-style");
+      incHeader.classList.remove("activeList");
+      incHeader.classList.add("list-type-style");
+    }
+  };
+
   var setUpEventListeners = function () {
     var DomStrings;
     DomStrings = uiCtrl.getDomStrings();
@@ -260,6 +255,9 @@ var appController = (function (dataCtrl, uiCtrl) {
     document
       .querySelector(DomStrings.deleteItem)
       .addEventListener("click", deleteItem);
+    document
+      .querySelector(DomStrings.listCat)
+      .addEventListener("click", changeList);
   };
   return {
     init: function () {
