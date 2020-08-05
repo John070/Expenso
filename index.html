@@ -1,98 +1,110 @@
 <!DOCTYPE html>
-<head>
-  <title>Expenso</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script
-    src="https://kit.fontawesome.com/8dcb1ccc6f.js"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
-  ></script>
-</head>
-<body>
-  <!-- <header class="header">
-    <h1>Expenso</h1>
-  </header> -->
-  <div class="container-top clearfix">
-    <div id="stats-1">
-      <div class="budget-total">
-        <div>Available budget: <span class="budget-available">0</span></div>
-        <div>Total income: <span class="total-income">0</span></div>
-        <div>Total expense: <span class="total-expense">0</span></div>
-      </div>
-      <div class="date-today"></div>
-    </div>
-    <div id="stats-2">
-      <!-- <p>Time is bla</p>
-      <p id="inc-perc">75%</p>
-      <p id="exp-perc">25%</p> -->
-      <canvas id="myChart" width="200" height="200"></canvas>
-    </div>
-  </div>
-  <div class="container-bottom clearfix">
-    <div class="list">
-      <!-- <div> -->
-      <div class="list-type clearfix">
-        <a href="#" id="list-type-income" class="activeList">Income</a>
-        <!-- </div> -->
-        <!-- <div> -->
-        <a href="#" id="list-type-expense" class="list-type-style">Expense</a>
-        <!-- </div> -->
-      </div>
-      <div class="income-list">
-        <!-- <table class="inc-table table-style"> -->
-        <!-- <!-- <div class="item">
-          <div class="item-desc">Salary</div>
-          <div class="item-value">
-            25000<span class="delete-btn">hello</span>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expenso</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/8dcb1ccc6f.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container-stats container-fluid">
+      <div class="row">
+        <div id="stats-1" class="col-7">
+          <div class="date-today" style="text-align: center;"></div>
+          <div class="budget-total row">
+            <div class="col" style="text-align: center;">
+              Available budget:
+              <div class="budget-available" style="text-align: center;">0</div>
+            </div>
+            <div class="col" style="text-align: center;">
+              Total income:
+              <div class="total-income" style="text-align: center;">0</div>
+            </div>
+            <div class="col" style="text-align: center;">
+              Total expense:
+              <div class="total-expense" style="text-align: center;">0</div>
+            </div>
           </div>
-        </div>
-        <div class="item">
-          <div class="item-desc">Bonus</div>
-          <div class="item-value">5000</div>
-        </div> -->
 
-        <!-- <div class="item clearfix">
-          <div class="item-desc">Salary</div>
-          <div class="item-value">
-            25000<span class="delete-btn"><i class="fas fa-trash"></i></span>
+          <form>
+            <div class="form-row form-container">
+              <div class="col-1">
+                <select class="add__type form-control form-control-sm">
+                  <option value="inc">+</option>
+                  <option value="exp">-</option>
+                </select>
+              </div>
+              <div class="col">
+                <input
+                  type="text"
+                  id="desc"
+                  class="form-control"
+                  placeholder="Description"
+                />
+              </div>
+              <div class="col">
+                <input class="form-control" type="number" id="value" />
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-primary" id="add-btn">
+                  Add Item
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="container-list">
+            <div class="list">
+              <!-- <div> -->
+              <div class="list-type row">
+                <a href="#" id="list-type-income" class="activeList col"
+                  >Income</a
+                >
+                <a href="#" id="list-type-expense" class="list-type-style col"
+                  >Expense</a
+                >
+              </div>
+              <div class="income-list"></div>
+              <div class="expense-list"></div>
+            </div>
           </div>
         </div>
-        <div class="item clearfix">
-          <div class="item-desc">Bonus</div>
-          <div class="item-value">
-            5000<span class="delete-btn"><i class="fas fa-trash"></i></span>
+        <div id="stats-2" class="col">
+          <div class="chart-display">
+            <canvas id="myChart" width="200" height="100"></canvas>
           </div>
-        </div> -->
-      </div>
-      <!-- </table> -->
-      <!-- </div> -->
-      <div class="expense-list">
-        <!-- <table class="exp-table table-style"> -->
-        <!-- <tr id="exp-1">
-            <td>Rent</td>
-            <td>8000</td>
-          </tr>
-          <tr id="exp-2">
-            <td>Electricity</td>
-            <td>1500</td>
-          </tr> -->
-        <!-- </table> -->
+        </div>
       </div>
     </div>
-    <div class="add-item-container">
-      <div class="add-item">
-        <select class="add__type">
-          <option value="inc">+</option>
-          <option value="exp">-</option>
-        </select>
-        <input type="text" id="desc" placeholder="Description...." />
-        <input type="number" id="value" />
-        <button id="add-btn">Add Item</button>
-      </div>
-    </div>
-  </div>
-  <script src="js/app.js"></script>
-</body>
+
+    <script src="js/app.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
