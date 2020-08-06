@@ -122,6 +122,10 @@ var uiController = (function () {
       }
       table.insertAdjacentHTML("beforeend", htmlString);
     },
+    clearInputs: function () {
+      document.querySelector(DOMStrings.description).value = "";
+      document.querySelector(DOMStrings.value).value = "";
+    },
     updateTotal: function (totalBudget) {
       var inc, exp;
       inc = totalBudget.inc;
@@ -185,7 +189,7 @@ var appController = (function (dataCtrl, uiCtrl) {
     totalBudget = dataCtrl.getTotal();
     // console.log(totalBudget);
     uiCtrl.updateTotal(totalBudget);
-
+    uiCtrl.clearInputs();
     // dataCtrl.testOp();
   };
 
